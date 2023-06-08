@@ -1,0 +1,12 @@
+---
+- name: File missing play
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: "File missing"
+
+    - name: "Restart apache webserver"
+      service:
+        name: httpd
+        state: restarted

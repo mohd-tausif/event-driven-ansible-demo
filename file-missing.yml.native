@@ -1,0 +1,33 @@
+---
+- name: Playbook to Execute workflows
+  hosts: localhost #"{{ hosts }}"
+  tasks:
+      - name: calling the rest api
+        uri:
+          url: "https://10.76.107.98/api/v2/workflow_job_templates/10/launch/"
+          method: GET
+          user: admin
+          password: admin
+          validate_certs: False
+          force_basic_auth: yes
+          status_code: 200
+        register: workflow1_extra_vars
+
+          # - name: debug the command
+        #  debug:
+          #          msg: "{{ workflow1_extra_vars.json.extra_vars }}"
+
+      - name: PUT the rest api
+        uri:
+          url: "https://10.76.107.98/api/v2/workflow_job_templates/10/launch/"
+          method: POST
+          user: admin
+          password: admin
+          validate_certs: False
+          force_basic_auth: yes
+          headers:
+            Content-Type: "application/json"
+          body_format: json
+          body: '{
+          }'
+        ignore_errors: true

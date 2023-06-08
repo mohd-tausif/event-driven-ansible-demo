@@ -1,0 +1,20 @@
+---
+- name: File missing play
+  hosts: localhost
+  gather_facts: false
+  collections:
+    - ansible.controller
+  vars:
+    controller_host: 10.76.107.98
+    controller_username: admin
+    controller_password: admin
+    controller_validate_certs: false
+
+  tasks:
+    - debug:
+        msg: "File missing"
+
+    - name: Launch a job
+      job_launch:
+        job_template: "Restart-Application"
+      register: job

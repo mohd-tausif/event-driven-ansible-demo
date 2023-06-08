@@ -1,7 +1,20 @@
 ---
 - name: File missing play
-  hosts: all
+  hosts: localhost
   gather_facts: false
+  connection: local
+  collections:
+    - ansible.controller
+
   tasks:
     - debug:
         msg: "File missing"
+
+    - name: Launch a workflow
+      workflow_launch:
+        workflow_template: "WF_restart_application"
+        controller_host: https://10.76.107.98
+        controller_username: admin
+        controller_password: admin
+        validate_certs: false
+      register: job
