@@ -1,13 +1,16 @@
 ---
-- name: Site status
+- name: Service Status Play
   hosts: all
   gather_facts: false
   become: true
   tasks:
-    - debug:
-        msg: "Website is back up!"
 
     - name: "Status of apache webserver"
-      service:
+      ansible.builtin.systemd:
         name: httpd
-        state: reloaded
+      register: application_service_status
+
+    - name: Application Status
+      debug:
+        msg: "Application Service Status => {{ application_service_status.status.ActiveState }}"
+

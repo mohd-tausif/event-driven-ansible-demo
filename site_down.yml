@@ -1,16 +1,17 @@
 ---
-- name: Site Down
-  hosts: localhost
+- name: Application Down - Rememdiation 
+  hosts: 10.76.107.100
   gather_facts: false
   connection: local
   collections:
     - ansible.controller
 
   tasks:
-    - debug:
+    - name: Display Service Status 
+      debug:
         msg: "Website is down!"
 
-    - name: Launch a workflow
+    - name: Application Down => Triggering Remediation Workflow
       workflow_launch:
         workflow_template: "WF_restart_application"
         controller_host: https://10.76.107.98

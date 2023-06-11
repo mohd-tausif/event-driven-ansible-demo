@@ -1,12 +1,13 @@
 ---
-- name: restart service play
+- name:  Application Down - Rememdiation play
   hosts: all
   gather_facts: false
   tasks:
-    - debug:
+    - name: Application Status
+      debug:
         msg: "service down"
 
-    - name: "Restart apache webserver"
+    - name: "Restart Application Service"
       service:
         name: httpd
         state: restarted
