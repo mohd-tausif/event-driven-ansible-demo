@@ -1,0 +1,8 @@
+---
+- name: Workflow Exit
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: "Work Flow exited"
+
