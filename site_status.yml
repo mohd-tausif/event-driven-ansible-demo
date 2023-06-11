@@ -10,4 +10,4 @@
     - name: "Status of apache webserver"
       service:
         name: httpd
-        state: status
+        state: reloaded

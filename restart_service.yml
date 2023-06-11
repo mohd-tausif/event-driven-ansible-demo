@@ -1,0 +1,13 @@
+---
+- name: restart service play
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: "service down"
+
+    - name: "Restart apache webserver"
+      service:
+        name: httpd
+        state: restarted
+
