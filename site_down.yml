@@ -7,14 +7,10 @@
     - debug:
         msg: "Website is down!"
 
-    - name: "Ensure firewall openings are in place."
-      firewalld:
-        service: http
-        permanent: yes
-        state: enabled
-        immediate: yes
-
-    - name: "Restart apache webserver"
-      service:
-        name: httpd
-        state: restarted
+    - name: Launch a workflow
+      workflow_launch:
+        workflow_template: "WF_restart_application"
+        controller_host: https://10.76.107.98
+        controller_username: admin
+        controller_password: admin
+        validate_certs: false
