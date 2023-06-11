@@ -1,7 +1,8 @@
 ---
-- name: Site is up
+- name:  Application Service is Up Play
   hosts: all
   gather_facts: false
   tasks:
-    - debug:
+    - name: Appliation Service Status 
+      debug:
         msg: "All is up and well"

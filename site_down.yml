@@ -1,5 +1,5 @@
 ---
-- name: Application Down - Rememdiation 
+- name: Application Service is Down - Rememdiation Play 
   hosts: 10.76.107.100
   gather_facts: false
   connection: local
@@ -7,9 +7,9 @@
     - ansible.controller
 
   tasks:
-    - name: Display Service Status 
+    - name: Application Service Status 
       debug:
-        msg: "Website is down!"
+        msg: "Application Service is down!"
 
     - name: Application Down => Triggering Remediation Workflow
       workflow_launch:
